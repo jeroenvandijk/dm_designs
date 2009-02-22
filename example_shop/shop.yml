@@ -1,0 +1,51 @@
+models: 
+  cart: 
+    associations: 
+    - line_item: belongs_to
+    - customer: belongs_to
+    attributes: 
+    - newAttr: integer
+  customer: 
+    associations: 
+    - cart: belongs_to
+    - store: belongs_to
+    - orders: has_many
+    attributes: 
+    - name: string
+    - buyer_details: string
+  line_item: 
+    associations: 
+    - product: belongs_to
+    - carts: has_many
+    - order: belongs_to
+    attributes: 
+    - quantitiy: integer
+    - price: integer
+  order: 
+    associations: 
+    - customer: belongs_to
+    - line_items: has_many
+    - options: 
+        :through: line_items
+      products: has_many
+    attributes: []
+
+  product: 
+    associations: 
+    - line_items: has_many
+    - store: belongs_to
+    - options: 
+        :through: line_items
+      orders: has_many
+    attributes: 
+    - name: string
+    - description: text
+    - image: image_url
+    - price: currency
+    - newAttr: integer
+  store: 
+    associations: 
+    - products: has_many
+    - customers: has_many
+    attributes: 
+    - name: string

@@ -1,0 +1,14 @@
+dm_designs
+===========
+In this repository you can find designs of the community that can be converted to rails applications with the dm_generator plugin (http://github.com/jeroenvandijk/dm_generator). The goal is to create a library of designs that can be reused by others, so we don't have to repeat others (DRO, the successor of DRY ;) )
+
+If you want to add an existing design, create a yaml file of your design by running 'rake dm:export' (a rake task available from
+http://github.com/jeroenvandijk/dm_generator)
+
+If you want to add a new design, design a model in an uml tool (*). Export your model to an xmi format. Convert the xmi to yaml by running 'rake dm:xmi:to_yaml > your_model_name.yml'. Remove the clutter from the yaml file. Preferably, you should add the original uml file, the xmi file, the yaml file and an image of the design. It would also be nice if you can add comments to your design to explain your decisions.
+
+You can see an example of a design in the directory 'example_shop'. This design was created with ArgoUml 0.26.2
+(an opensource uml tool available at http://argouml.tigris.org/).
+
+* dm_generator has currently only been used with ArgoUml. However dm_generator reads the common format of xmi 1.2 so other tools are probably also supported.
+
