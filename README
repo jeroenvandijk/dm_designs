@@ -12,3 +12,6 @@ You can see an example of a design in the directory 'example_shop'. This design 
 
 * dm_generator has currently only been used with ArgoUml. However dm_generator reads the common format of xmi 1.2 so other tools are probably also supported.
 
+---
+
+Copyright 2009 Jeroen van Dijk
