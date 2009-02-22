@@ -1,10 +1,16 @@
 models: 
   cart: 
     associations: 
-    - line_item: belongs_to
+    - line_items: has_many
     - customer: belongs_to
-    attributes: 
-    - newAttr: integer
+    - options: 
+        :through: line_items
+      products: has_many
+    - options: 
+        :through: line_items
+      orders: has_many
+    attributes: []
+
   customer: 
     associations: 
     - cart: belongs_to
@@ -16,7 +22,7 @@ models:
   line_item: 
     associations: 
     - product: belongs_to
-    - carts: has_many
+    - cart: belongs_to
     - order: belongs_to
     attributes: 
     - quantitiy: integer
@@ -28,12 +34,18 @@ models:
     - options: 
         :through: line_items
       products: has_many
+    - carts: has_many
+      options: 
+        :through: line_items
     attributes: []
 
   product: 
     associations: 
     - line_items: has_many
     - store: belongs_to
+    - carts: has_many
+      options: 
+        :through: line_items
     - options: 
         :through: line_items
       orders: has_many
@@ -42,7 +54,6 @@ models:
     - description: text
     - image: image_url
     - price: currency
-    - newAttr: integer
   store: 
     associations: 
     - products: has_many
